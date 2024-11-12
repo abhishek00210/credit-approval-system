@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Approval System Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
+        h1 { color: #333; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+    </style>
+</head>
+<body>
+    <h1>Credit Approval System Dashboard</h1>
+    
+    <h2>Customers</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Monthly Income</th>
+            <th>Approved Limit</th>
+        </tr>
+        {% for customer in customers %}
+        <tr>
+            <td>{{ customer.id }}</td>
+            <td>{{ customer.first_name }} {{ customer.last_name }}</td>
+            <td>{{ customer.age }}</td>
+            <td>{{ customer.monthly_income }}</td>
+            <td>{{ customer.approved_limit }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Loans</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Customer</th>
+            <th>Loan Amount</th>
+            <th>Interest Rate</th>
+            <th>Tenure</th>
+            <th>EMIs Paid on Time</th>
+        </tr>
+        {% for loan in loans %}
+        <tr>
+            <td>{{ loan.id }}</td>
+            <td>{{ loan.customer.first_name }} {{ loan.customer.last_name }}</td>
+            <td>{{ loan.loan_amount }}</td>
+            <td>{{ loan.interest_rate }}%</td>
+            <td>{{ loan.tenure }}</td>
+            <td>{{ loan.emis_paid_on_time }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
